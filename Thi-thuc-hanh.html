@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai thi</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="1000px" height="500px" style="border:1px solid black;"></canvas>
+</body>
+</html>
+    <script>
+        //Bài 1:
+        function findMax(arr) {
+            let max=arr[0];
+            for (let i=0; i<arr.length; i++){
+                if(max<arr[i]){
+                    max=arr[i];
+                }
+            } return max;
+        }
+
+        //Bài 2:
+        function tryRemoveFromArray(arr,x) {
+            let a = []
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === x) {
+                    a.push(i);
+                }
+            }
+            let count = 0;
+            for (let j = 0; j < a.length; j++) {
+                arr.splice(a[j] - count, 1)
+                count++;
+            }
+            return arr;
+        }
+
+
+        //Bài 3:
+        function isFibonacci(x){
+            let check=false;
+            if (x===0){
+                check = true;
+            }
+            let arr=[1,1];
+            for (let i=0; i<x; i++){
+                arr[arr.length]=arr[arr.length-1]+arr[arr.length-2];
+                if(x===arr[arr.length-1]){
+                    check= true;
+                }
+            }
+            return check;
+        }
+        // let x=parseInt(prompt("Nhập số cần kiểm tra"));
+        // isFibonacci(x);
+
+
+        //Bài 4:
+        let canvas = document.getElementById("myCanvas");
+        let ctx = canvas.getContext("2d");
+        class Circle{
+            constructor(x,y,radius,color) {
+                this.x=x;
+                this.y=y;
+                this.radius=radius;
+                this.color=color;
+            }
+            render(){
+                ctx.beginPath();
+                ctx.arc(this.x,this.y,this.radius,0,2*Math.PI);
+                ctx.fillStyle=this.color;
+                ctx.fill();
+                ctx.stroke();
+            }
+        }
+        let circle = new Circle(10,10,100,"#00000")
+        circle.render();
+    </script>
